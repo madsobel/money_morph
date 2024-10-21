@@ -57,7 +57,7 @@ defmodule MoneyMorph.MixProject do
       {:bandit, "~> 1.5"},
       {:req, "~> 0.5.6"},
       {:elixir_xml_to_map, "~> 3.1"},
-      {:mix_test_watch, "~> 1.2", only: :dev, runtime: false},
+      {:mix_test_watch, "~> 1.2", only: :dev, runtime: false}
     ]
   end
 

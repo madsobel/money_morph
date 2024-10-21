@@ -10,23 +10,24 @@ kill_signal = 'SIGTERM'
 [build]
 
 [env]
-  PHX_HOST = 'money-morph.fly.dev'
-  PORT = '8080'
+PHX_HOST = 'moneymorph.dev'
+PORT = '8080'
+DNS_CLUSTER_QUERY = 'money-morph.internal'
 
 [http_service]
-  internal_port = 8080
-  force_https = true
-  auto_stop_machines = 'stop'
-  auto_start_machines = true
-  min_machines_running = 0
-  processes = ['app']
+internal_port = 8080
+force_https = true
+auto_stop_machines = 'stop'
+auto_start_machines = true
+min_machines_running = 0
+processes = ['app']
 
-  [http_service.concurrency]
-    type = 'connections'
-    hard_limit = 1000
-    soft_limit = 1000
+[http_service.concurrency]
+type = 'connections'
+hard_limit = 1000
+soft_limit = 1000
 
 [[vm]]
-  memory = '512mb'
-  cpu_kind = 'shared'
-  cpus = 1
+memory = '512mb'
+cpu_kind = 'shared'
+cpus = 1
