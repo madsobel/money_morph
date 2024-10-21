@@ -1,0 +1,272 @@
+<div class="h-96 w-full relative circuit_board">
+  <div class="absolute w-full left-0 top-0 right-0 bottom-0 bg-gradient-to-b from-zinc-800 to-transparent">
+    <div class="max-w-4xl mx-auto p-4 h-full">
+      <.flash_group flash={@flash} />
+      <div class="flex items-center justify-between">
+        <span class="text-zinc-300 font-mono text-xl">moneymorph</span>
+        <ul class="flex items-center">
+          <li>
+            <a href="#" class="text-zinc-200 p-4 hover:underline">Status</a>
+          </li>
+          <li>
+            <a href="#" class="text-zinc-200 p-4 hover:underline">GitHub</a>
+          </li>
+        </ul>
+      </div>
+      <div class="flex items-center justify-center h-5/6">
+        <div class="grid grid-cols-2 gap-4">
+          <div class="">
+            <h1 class="text-zinc-300 font-mono text-3xl">
+              100% free and open source forex and currency conversion API
+            </h1>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+              <a
+                href="#introduction"
+                class="bg-zinc-300 text-zinc-800 px-4 py-3 text-center rounded"
+              >
+                Documentation
+              </a>
+              <a href="#" class="bg-zinc-600 text-zinc-200 px-4 py-3 text-center rounded">
+                GitHub
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="max-w-4xl mx-auto flex gap-4">
+  <div class="w-72 pt-4">
+    <div class="sticky top-4">
+      <h2 class="font-mono text-zinc-500 text-sm px-4">Documentation</h2>
+      <ul class="flex flex-col mb-4">
+        <li>
+          <a href="#introduction" class="block text-zinc-600 px-4 py-2 hover:bg-zinc-300">
+            Introduction
+          </a>
+        </li>
+        <li>
+          <a href="#contribution" class="block text-zinc-600 px-4 py-2 hover:bg-zinc-300">
+            Contribution
+          </a>
+        </li>
+      </ul>
+
+      <h2 class="font-mono text-zinc-500 text-sm px-4">Endpoints</h2>
+      <ul class="flex flex-col mb-4">
+        <li>
+          <a href="#latest" class="flex items-center text-zinc-600 px-4 py-2 hover:bg-zinc-300">
+            <span class="font-mono bg-zinc-500 text-zinc-200 px-1.5 py-0.5 text-sm rounded mr-1">
+              GET
+            </span>
+            /api/latest
+          </a>
+        </li>
+        <li>
+          <a
+            href="#currencies"
+            class="flex items-center text-zinc-600 px-4 py-2 hover:bg-zinc-300"
+          >
+            <span class="font-mono bg-zinc-500 text-zinc-200 px-1.5 py-0.5 text-sm rounded mr-1">
+              GET
+            </span>
+            /api/currencies
+          </a>
+        </li>
+        <li>
+          <a href="#convert" class="flex items-center text-zinc-600 px-4 py-2 hover:bg-zinc-300">
+            <span class="font-mono bg-zinc-500 text-zinc-200 px-1.5 py-0.5 text-sm rounded mr-1">
+              GET
+            </span>
+            /api/convert
+          </a>
+        </li>
+      </ul>
+    </div>
+  </div>
+  <div class="w-full p-4">
+    <h2 id="introduction" class="font-mono text-zinc-600 text-2xl mb-4">Introduction</h2>
+    <div class="prose mb-16">
+      <p>
+        moneymorph is a free and open source forex and currency conversion API. It provides
+        real-time exchange rates for many world currencies, delivered in JSON format.
+        It is a simple and easy-to-use API that can be used to convert one currency to
+        another.
+      </p>
+      <p>
+        The API is free to use and does not require any authentication.
+        It is designed to be almost feature comparable to Open Exchange Rates API, which almost makes it a drop-in replacement, and 100% compatible with libraries such as money.js.
+        The missing features compared to commercial APIs are historical exchange rates and time-series data, which is not planned to be implemented, as it would greatly increase the complexity, and the cost of running the service.
+        If you need historical exchange rates, I recommend using the a commercial API, such as Open Exchange Rates, or Fixer.
+        But if you just need the latest exchange rates, and the ability to convert between currencies, moneymorph is the perfect choice.
+      </p>
+      <p>
+        Why free? Well, because of two things. First, I have had the need for this API in the past and I didn't want to pay a huge premium for it. Second, I wanted to see how far the Phoenix framework and Elixir can go in terms of performance.
+      </p>
+      <p>
+        While the API is free to use, it does cost a little money to run, so if you find it useful, please consider <a
+          href="https://buymeacoffee.com/moneymorph"
+          target="_blank"
+          class="underline"
+        >buying me a coffee</a>, to help keep the lights on.
+      </p>
+    </div>
+    <h2 id="contribution" class="font-mono text-zinc-600 text-2xl mb-4">Contribution</h2>
+    <div class="prose mb-16">
+      <p>
+        moneymorph is an open source project and contributions are welcome. If you would like to contribute to the project, please check out the GitHub repository and submit a pull request.
+      </p>
+      <p>
+        Right now, the project is in its early stage, and there's no roadmap other than making it feature comparable to Open Exchange Rates API. If you have any ideas or suggestions, please feel free to open an issue on GitHub.
+      </p>
+    </div>
+
+    <h2 id="latest" class="font-mono text-zinc-600 text-2xl mb-4">
+      <span class="font-mono bg-zinc-500 text-zinc-200 px-1.5 py-0.5 rounded">GET</span>
+      /api/latest
+    </h2>
+    <div class="prose mb-16">
+      <p>
+        The <code>/api/latest</code>
+        endpoint returns the latest exchange rates for all available currencies.
+        The available currencies are indexed by their standard ISO 4217 currency codes.
+      </p>
+      <p>
+        The exchange rates are calculated relative to the base currency, which is the currency that the rates are quoted against.
+        This is by default set to USD, but can be changed by passing the <code>base</code>
+        parameter.
+      </p>
+      <h3>Example</h3>
+      <pre>
+curl --location --request GET 'https://moneymorph.dev/api/latest'
+  --header 'Content-Type: application/json'
+      </pre>
+      <h3>Response</h3>
+      <pre>
+{
+    "timestamp": 1729536414,
+    "base": "USD",
+    "rates": {
+        "AUD": 1.4954,
+        "BGN": 1.8021,
+        "BRL": 5.7084,
+        ...
+    }
+}
+      </pre>
+      <h3>Query Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-mono">base</td>
+            <td>
+              <strong>Optional.</strong>
+              The base currency to use for exchange rate calculation. By default, this is set to USD.
+            </td>
+          </tr>
+          <tr>
+            <td class="font-mono">symbols</td>
+            <td>
+              <strong>Optional.</strong>
+              A comma-separated list of currency codes to limit the output to. If not specified, all available currencies will be returned.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2 id="currencies" class="font-mono text-zinc-600 text-2xl mb-4">
+      <span class="font-mono bg-zinc-500 text-zinc-200 px-1.5 py-0.5 rounded">GET</span>
+      /api/currencies
+    </h2>
+    <div class="prose mb-16">
+      <p>
+        The <code>/api/currencies</code> endpoint returns a list of all available currencies.
+        The currencies are indexed by their standard ISO 4217 currency codes.
+      </p>
+      <h3>Example</h3>
+      <pre>
+curl --location --request GET 'https://moneymorph.dev/api/currencies'
+  --header 'Content-Type: application/json'
+      </pre>
+
+      <h3>Response</h3>
+      <pre>
+{
+    "AUD": "Australian Dollar",
+    "BGN": "Bulgarian Lev",
+    "BRL": "Brazilian Real",
+    ...
+}
+      </pre>
+    </div>
+
+    <h2 id="convert" class="font-mono text-zinc-600 text-2xl mb-4">
+      <span class="font-mono bg-zinc-500 text-zinc-200 px-1.5 py-0.5 rounded">GET</span>
+      /api/convert/:amount/:from/:to
+    </h2>
+    <div class="prose mb-16">
+      <p>
+        The <code>/api/convert</code> endpoint converts an amount from one currency to another.
+        The amount to convert, the source currency, and the target currency are part of the URL.
+      </p>
+      <h3>Example</h3>
+      <pre>
+curl --location --request GET 'https://moneymorph.dev/api/convert/10/USD/EUR'
+  --header 'Content-Type: application/json'
+      </pre>
+      <h3>Response</h3>
+      <pre>
+{
+    "meta": {
+        "timestamp": 1729536702,
+        "rate": 0.9214
+    },
+    "request": {
+        "to": "EUR",
+        "query": "/convert/10.0/USD/EUR",
+        "from": "USD",
+        "amount": 10.0
+    },
+    "response": 9.214
+}
+      </pre>
+      <h3>Path Parameters</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Parameter</th>
+            <th>Description</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="font-mono">amount</td>
+            <td>
+              <strong>Required.</strong> The amount to convert. Must be a number.
+            </td>
+          </tr>
+          <tr>
+            <td class="font-mono">from</td>
+            <td>
+              <strong>Required.</strong> The source currency code.
+            </td>
+          </tr>
+          <tr>
+            <td class="font-mono">to</td>
+            <td>
+              <strong>Required.</strong> The target currency code.
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

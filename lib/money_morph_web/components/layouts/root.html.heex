@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" class="[scrollbar-gutter:stable]">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="csrf-token" content={get_csrf_token()} />
+    <.live_title>
+      <%= assigns[:page_title] || "MoneyMorph" %>
+    </.live_title>
+    <link phx-track-static rel="stylesheet" href={~p"/assets/app.css"} />
+    <link rel="icon" type="image/png" href={~p"/images/favicon-48x48.png"} sizes="48x48" />
+    <link rel="icon" type="image/svg+xml" href={~p"/images/favicon.svg"} />
+    <link rel="shortcut icon" href={~p"/images/favicon.ico"} />
+    <link rel="apple-touch-icon" sizes="180x180" href={~p"/images/apple-touch-icon.png"} />
+    <meta name="apple-mobile-web-app-title" content="moneymorph" />
+    <link rel="manifest" href={~p"/images/site.webmanifest"} />
+    <script defer phx-track-static type="text/javascript" src={~p"/assets/app.js"}>
+    </script>
+  </head>
+  <body class="bg-zinc-200">
+    <%= @inner_content %>
+  </body>
+</html>
